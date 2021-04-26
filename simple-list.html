@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Webdesign Werkzeuge</title>
+<style>
+  * {
+    transition: all .5s;
+  }
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.65em;
+}
+.wrapper {
+  margin: 1em auto;
+  padding: 0 1em;
+  width: 60em;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  /*border-bottom: 1px solid #aaa;*/
+  margin: 0;
+  /*padding: 0 0 .25em 0;*/
+}
+a {
+  text-decoration: none;
+  display: block;
+  color: #000;
+}
+a:hover {
+  color: #000;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  padding: 0 .5em;
+  margin: 0;
+  line-height: 2;
+  border-bottom: 1px solid #fff;
+}
+ul li:hover {
+  color: #000;
+  background: #FFFF87;
+}
+ul a:hover {
+  padding: 0 0 0 .25em;
+}
+.grid--col--3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 1rem;
+  grid-row-gap: 2rem;
+}
+.col--1 { background: #ffd454; }
+.col--2 { background: #F2C747; }
+.col--3 { background: #E6BB3B; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="grid--col--3 mb1">
+      <div class="col--1">
+        <ul>
+          <li><h2>Geschwindigkeit</h2></li>
+          <li><a href="https://web.dev/measure/">web.dev/measure/</a></li>
+          <li><a href="https://tools.pingdom.com/">tools.pingdom.com/</a></li>
+          <li><a href="https://gtmetrix.com/">gtmetrix.com/</a></li>
+          <li><a href="">Link 4</a></li>
+          <li><a href="">Link 5</a></li>
+        </ul>
+      </div><!-- ende grid -->
+
+      <div class="col--2">
+        <ul>
+          <li><h2>Farbwerkzeuge</h2></li>
+          <li><a href="https://www.cssfontstack.com/oldsites/hexcolortool/">hexcolortool</a></li>
+          <li><a href="https://www.base64-image.de">Base64 Image Encoder</a></li>
+          <li><a href="https://andrew.hedges.name/experiments/aspect_ratio/">Aspect Ratio Calculator (ARC)</a></li>
+          <li><a href="https://www.webfx.com/web-design/hex-to-rgb/">Converter HEX RGB</a></li>
+          <li><a href="">Link 5</a></li>
+        </ul>
+      </div><!-- ende grid -->
+
+      <div class="col--3">
+        <ul>
+          <li><h2>Google Werkzeuge</h2></li>
+          <li><a href="">Link 1</a></li>
+          <li><a href="">Link 2</a></li>
+          <li><a href="">Link 3</a></li>
+          <li><a href="">Link 4</a></li>
+          <li><a href="">Link 5</a></li>
+        </ul>
+      </div><!-- ende grid -->
+
+  </div><!-- / .gridcol3 -->
+</div><!-- / .wrapper -->
+</body>
+</html>

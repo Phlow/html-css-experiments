@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Horizontale Navigation</title>
+<style>
+a {
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#nav-main,
+#nav-main ul
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#nav-main li {
+  float: left;
+  display: block;
+  transition-duration: 0.5s;
+  list-style: none;
+  position: relative;
+  background: darkorange;
+  padding: 1rem;
+}
+#nav-main li a {
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+#nav-main li:hover,
+#nav-main li:focus-within {
+  background: red;
+  cursor: pointer;
+}
+#nav-main li:focus-within a {
+  outline: none;
+}
+ul#nav-main li ul {
+  visibility: hidden;
+  min-width: 5rem;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+ul#nav-main li:hover > ul,
+ul#nav-main li:focus-within > ul,
+ul#nav-main li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+ul#nav-main li ul li {
+  clear: both;
+  width: 100%;
+}
+ul li ul li {
+  clear: both;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+  <nav role="navigation" id="topnav">
+    <ul id="nav-main">
+      <li><a href="#">Start</a></li>
+      <li>
+        <a href="#">Dienstleistungen</a>
+      </li>
+      <li>
+        <a href="#">Portfolio <small>&#9660;</small></a>
+        <ul>
+          <li><a href="#">Dropdown 1</a></li>
+          <li><a href="#">Dropdown 2</a></li>
+          <li><a href="#">Dropdown 3</a></li>
+          <li><a href="#">Dropdown 4</a></li>
+          <li><a href="#">Dropdown 5</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Über Mich</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
