@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <title>Simple Responsive Navigation</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #1d2433;
+      color: #d7dce2;
+    }
+    ul.topnav {
+      list-style: none; /* Bulletpoints entfernen */
+      background-color: #2f3b54;
+      margin: 0; /* Abstand auf 0 */
+      padding: 0;
+      overflow: hidden;
+      /* Die overflow Eigenschaft legt fest, ob Inhalte aus einem Element hinausragen dürfen oder, ob Scrollbalken beim Überlauf zum Einsatz kommen. Mit hidden wird der Inhalt abgeschnitten und es werden keine Scrollbalken angezeigt. */
+    }
+    .topnav li a {
+      display: block;
+      float: left;
+      padding: .75rem 1rem;
+      text-decoration: none;
+      color: #f2f2f2;
+    }
+    .topnav a:hover {
+      background-color: #6679a4;
+    }
+    .topnav li.active a {
+      background-color: #ffae57;
+    }
+    .topnav .icon {
+      display: none;  /* Menu und Icon in großer Ansicht entfernen */
+    }
+    @media screen and (max-width: 600px) {
+      .topnav li a {
+        display: none;
+      }
+      .topnav li.show a {
+        display: block;
+      }
+      .topnav a.icon {
+        float: right;
+        display: block;
+      }
+      .topnav.responsive {
+        position: relative;
+      }
+      .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+      .topnav svg {
+        margin-bottom: -1px;
+        padding: 0 6px 0 0;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    
+    <nav>
+      <ul id="top--navigation" class="topnav">
+        <li class="show active">
+          <a href="#">Start</a>
+        </li>
+        <li>
+          <a href="#">Aktuelles</a>
+        </li>
+        <li>
+          <a href="#">Kontakt</a>
+        </li>
+        <li>
+          <a href="#">Unser Service</a>
+        </li>
+        <li>
+          <a href="#">Über Uns</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <svg width="14px" height="14px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#d7dce2" d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"/></svg>
+          <strong>MENU</strong>
+        </a>
+      </li>
+      </ul>
+    </nav>
+    
+  <div style="padding: 1rem;">
+    <h1>Responsive Topnav-Navigation</h1>
+    <p>Ändern Sie die Größe des Browserfensters, um zu sehen, wie es funktioniert.</p>
+  </div>
+  
+  <script>
+  /* Umschalten zwischen Hinzufügen und Entfernen der Klasse "responsive" zu topnav, wenn der Benutzer auf das Icon/Menu klickt */
+  function myFunction() {
+  var x = document.getElementById("top--navigation");
+  if (x.className === "topnav") {
+  x.className += " responsive";
+  } else {
+  x.className = "topnav";
+  }
+  }
+  </script>
+  
+</body>
+</html>
