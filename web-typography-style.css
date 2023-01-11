@@ -1,0 +1,31 @@
+nav {
+border-bottom: 1px solid #ddd;
+display: block;
+height: auto;
+margin: 0 0 1em 0;
+}
+nav span {
+display: inline-block;
+margin: 7px;
+font-size: 1.5em;
+}
+a.circle { text-decoration: none; }
+.active .circle {
+background: #ffe01b;
+border: 2px solid #ffe01b;
+}
+.circle {
+border-radius: 50%;
+width: 14px;
+height: 14px;
+padding: 2px;
+border: 2px solid #000;
+text-align: center;
+font: 10px 'IBM Plex Mono', sans-serif;
+float: left;
+margin: 1em;
+}
+.circle:hover {
+background: #ffe01b;
+border: 2px solid #ffe01b;
+}
