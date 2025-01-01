@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation</title>
+
+<style>
+/* Basis-Reset */
+* {
+  box-sizing: border-box;
+}
+  body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.65;
+    font-family: 'JetBrains Mono';
+    font-size: 16px;
+  }
+.wrapper {
+  margin: 3rem auto 0;
+  padding: 0 2rem;
+  z-index: 10;
+  background: #fff;
+  max-width: 50rem;
+}
+
+#top-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#top-nav > li {
+  position: relative;
+}
+/* Links Styling */
+#top-nav a {
+  display: block;
+  text-align: center;
+  padding: 0.25rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#top-nav a:hover {
+  background-color: #fabb00;
+  border-radius: 4px;
+}
+  #top-nav li {
+    font-size: 1.25rem;
+  }
+  #top-nav li li {
+    font-size: 1rem;
+  }
+
+/* Dem Dropdown-Container position:relative geben */
+#top-nav li.dropdown {
+  position: relative;
+}
+
+#top-nav li.dropdown > a:after {
+  content: ' ◀'; /* ⌄ ▼ ← */
+}
+#top-nav li.dropdown.active {
+  background: #ffe8a5;
+}
+#top-nav li.dropdown.active > a:after {
+  content: ' ▼'; /* ⌄ ▼ ← */
+}
+/* Dropdown Styling - neue Version */
+#top-nav .dropdown > ul {
+  z-index: 10000;
+  display: none;
+  left: 100%;
+  top: -.75rem; /* Leicht nach oben versetzt für bessere UX */
+  padding: 10px 0;
+}
+#top-nav .dropdown.active > ul {
+  display: block;
+  background: #ffe8a5;
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+/* Navigation Container */
+nav {
+  height: 100vh;
+}
+
+/* Hauptnavigationsliste */
+#top-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigationspunkte */
+#top-nav > li {
+  position: relative;
+}
+
+/* Links Styling */
+#top-nav a {
+  display: block;
+  text-align: center;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+#top-nav a:hover {
+  background-color: #fabb00;
+  border-radius: 4px;
+}
+  #top-nav li {
+    font-size: 1.5rem;
+  }
+  #top-nav li li {
+    font-size: 1.25rem;
+  }
+
+/* Dem Dropdown-Container position:relative geben */
+#top-nav li.dropdown {
+  position: relative;
+}
+
+#top-nav li.dropdown > a:after {
+  content: ' ◀'; /* ⌄ ▼ ← */
+}
+#top-nav li.dropdown.active {
+  background: #ffe8a5;
+}
+#top-nav li.dropdown.active > a:after {
+  content: ' ▼'; /* ⌄ ▼ ← */
+}
+
+
+/* Dropdown Styling - neue Version */
+#top-nav .dropdown > ul {
+  z-index: 10000;
+  display: none;
+  left: 100%;
+  top: -.75rem; /* Leicht nach oben versetzt für bessere UX */
+}
+
+#top-nav .dropdown.active > ul {
+  display: block;
+  background: #ffe8a5;
+}
+
+
+/* Dropdown Link Styling */
+#top-nav .dropdown > ul > li > a {
+  padding: 8px 20px;
+  font-size: 1rem;
+}
+
+/* Hover-Effekt für Dropdown-Links */
+#top-nav .dropdown > ul > li > a:hover {
+  background-color: #fabb00;
+}
+
+.icon a {
+  display: block;
+  height: 2rem;
+  width: 2rem;
+
+}
+.icon {
+  z-index: 1000;
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  background: #007d7b url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMTIwLTI0MHYtODBoNzIwdjgwSDEyMFptMC0yMDB2LTgwaDcyMHY4MEgxMjBabTAtMjAwdi04MGg3MjB2ODBIMTIwWiIvPjwvc3ZnPg==') center center no-repeat;
+}
+.icon-close {
+  background: #007d7b url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjZmZmIj48cGF0aCBkPSJtMjU2LTIwMC01Ni01NiAyMjQtMjI0LTIyNC0yMjQgNTYtNTYgMjI0IDIyNCAyMjQtMjI0IDU2IDU2LTIyNCAyMjQgMjI0IDIyNC01NiA1Ni0yMjQtMjI0LTIyNCAyMjRaIi8+PC9zdmc+') center center no-repeat;
+}
+.mobile {
+  top: 0;
+  background: #fabb00dd;
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+
+  /* Verbesserte Touch-Unterstützung */
+  @media (hover: hover) {
+    #top-nav a:hover {
+      background-color: #ffe8a5;
+      border-radius: 4px;
+    }
+  }
+
+  /* Touch-Geräte */
+  @media (hover: none) {
+    #top-nav a:active {
+      background-color: #ffe8a5;
+      border-radius: 4px;
+    }
+  }
+
+  /* Vendor Prefixes für Transitions */
+  #top-nav a {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+
+  /* Focus Styles für Keyboard Navigation */
+  #top-nav a:focus {
+    outline: 2px solid #007d7b;
+    outline-offset: -2px;
+  }
+
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div class="icon"><a href="#"></a></div>
+<div class="mobile">
+  <nav>
+    <ul id="top-nav">
+      <li>
+        <a href="#">Start</a>
+      </li>
+      <li>
+        <a href="#">Chapter</a>
+      </li>
+      <li class="dropdown">
+        <a href="#">Material</a>
+        <ul>
+          <li><a href="#">Icons</a></li>
+          <li><a href="#">Images</a></li>
+          <li><a href="#">Snippets</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#">Contact</a>
+        <ul>
+          <li><a href="#">Author</a></li>
+          <li><a href="#">Phlow</a></li>
+          <li><a href="#">More</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Info</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="wrapper">
+  <h1>Navigation</h1>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</div>
+
+
+<script>
+  // Verbesserte Event-Handler
+  const menu = document.querySelector('.icon');
+  const mobileElement = document.querySelector('.mobile');
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  // Funktion zum Schließen des Menüs
+  function closeMenu() {
+    mobileElement.style.display = 'none';
+    menu.classList.remove('icon-close');
+    // Schließe auch alle offenen Dropdowns
+    dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+  }
+
+  // Menü Toggle mit Touch-Support
+  menu.addEventListener('click', toggleMenu);
+  menu.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    toggleMenu();
+  });
+
+  function toggleMenu() {
+    menu.classList.toggle('icon-close');
+    mobileElement.style.display = mobileElement.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Schließen beim Klick außerhalb
+  document.addEventListener('click', (event) => {
+    if (!mobileElement.contains(event.target) && !menu.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  // ESC-Taste zum Schließen
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  // Verbesserte Dropdown-Handler
+  dropdowns.forEach((dropdown) => {
+    // Click/Touch Events
+    dropdown.addEventListener('click', handleDropdown);
+    dropdown.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handleDropdown(e);
+    });
+
+    // Keyboard Navigation
+    dropdown.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleDropdown(e);
+      }
+    });
+  });
+
+  function handleDropdown(event) {
+    event.stopPropagation();
+    const currentDropdown = event.currentTarget;
+    
+    // Schließe andere offene Dropdowns
+    dropdowns.forEach((d) => {
+      if (d !== currentDropdown) {
+        d.classList.remove('active');
+      }
+    });
+    
+    currentDropdown.classList.toggle('active');
+  }
+</script>
+
+
+
+</body>
+</html>
